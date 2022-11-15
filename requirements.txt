@@ -1,2 +1,12 @@
+cloudpickle==2.2.0
+gym==0.25.1
+gym-notices==0.0.8
+gym-super-mario-bros==7.4.0
+importlib-metadata==5.0.0
+nes-py==8.2.1
+numpy==1.23.4
+pyglet==1.5.21
 torch==1.13.0
+tqdm==4.64.1
 typing_extensions==4.4.0
+zipp==3.10.0
