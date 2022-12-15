@@ -1,6 +1,6 @@
 ## How To Use The Code
 
-1. Clone the prooject
+1. Clone the project
     ```
     git clone git@github.com:haraldger/4995-Deep-Reinforcement-Learning.git
     ```
