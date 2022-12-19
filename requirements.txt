@@ -31,3 +31,11 @@ packaging==22.0
 scikit-image==0.19.3 
 scipy==1.9.3 
 tifffile==2022.10.10
+contourpy==1.0.6 
+cycler==0.11.0 
+fonttools==4.38.0 
+kiwisolver==1.4.4 
+matplotlib==3.6.2 
+pyparsing==3.0.9 
+python-dateutil==2.8.2 
+six==1.16.0
