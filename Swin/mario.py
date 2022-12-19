@@ -19,7 +19,7 @@ from models.swin_transformer_v2 import SwinTransformerV2 as Transformer
 DEVICE = 'cuda' if torch.cuda.is_available() else 'cpu'
 GAMES = 1000
 REPLAY_MEMORY = 40000
-INITIAL_EXPLORATION = 0
+INITIAL_EXPLORATION = 40000
 # INITIAL_EPSILON = 1.0
 # FINAL_EPSILON = 0.01
 DECAY_FRAMES = 10000
