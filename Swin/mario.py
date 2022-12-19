@@ -39,7 +39,7 @@ def mario():
     # Init data structures
     q_network = get_model()
     target_network = get_model()
-    epsilon_scheduler = EpsilonScheduler(decay_frames=DECAY_FRAMES, decay_mode=DECAY_MODE, decay_rate=DECAY_RATE, start_frames=DECAY_START_FRAMES, initial_epsilon=1)
+    epsilon_scheduler = EpsilonScheduler(decay_frames=DECAY_FRAMES, decay_mode=DECAY_MODE, decay_rate=DECAY_RATE, start_frames=DECAY_START_FRAMES, initial_epsilon=0)
     replay_buffer = ReplayBuffer(capacity=REPLAY_MEMORY)
     agent = SwinAgent(q_network, target_network, epsilon_scheduler, replay_buffer, num_actions=NUM_ACTIONS,
                         initial_exploration=INITIAL_EXPLORATION, sync_frequency=SYNC_FREQUENCY)
@@ -60,7 +60,7 @@ def mario():
 
             # Act
             action = agent.act(previous_state)
-            print(action)
+            print(action.item())
             next_state, reward, terminated, info = env.step(action)
             next_state = process_state(next_state)
 
