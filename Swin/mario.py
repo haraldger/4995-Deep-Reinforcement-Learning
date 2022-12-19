@@ -76,23 +76,21 @@ def mario():
             epsilon_scheduler.step()
 
             if terminated:
+                print("Terminated naturally")
                 break 
 
-        terminated = True
 
-        # Environment
-        if terminated:
-            # Data collection
-            global reward_data
-            reward_data = np.concatenate((reward_data, np.array([[game, total_reward]])))
-            plt.figure()
-            plt.plot(reward_data[:,0], reward_data[:,1])
-            plt.savefig(f'data/mario_graph.png')
-            plt.close()
+        # Data collection
+        global reward_data
+        reward_data = np.concatenate((reward_data, np.array([[game, total_reward]])))
+        plt.figure()
+        plt.plot(reward_data[:,0], reward_data[:,1])
+        plt.savefig(f'data/mario_graph.png')
+        plt.close()
 
-            total_reward = 0
-            next_state = env.reset() 
-            next_state = process_state(next_state)
+        total_reward = 0
+        next_state = env.reset() 
+        next_state = process_state(next_state)
         
     
 def process_state(state):
