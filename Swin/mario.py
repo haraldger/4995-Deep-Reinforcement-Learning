@@ -26,7 +26,7 @@ INITIAL_EXPLORATION = 40000
 DECAY_FRAMES = 10000
 DECAY_MODE = 'multiple'
 DECAY_RATE = 0.25
-DECAY_START_FRAMES = 0
+DECAY_START_FRAMES = 40000
 SYNC_FREQUENCY = 2500
 
 # Data collection
@@ -60,6 +60,8 @@ def mario():
 
             # Act
             action = agent.act(previous_state)
+            if action is torch.Tensor:
+                action = action.item()
             next_state, reward, terminated, info = env.step(action)
             next_state = process_state(next_state)
 
