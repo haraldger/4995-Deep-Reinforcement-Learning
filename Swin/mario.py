@@ -60,7 +60,8 @@ def mario():
 
             # Act
             action = agent.act(previous_state)
-            print(type(action))
+            if type(action) == torch.Tensor:
+                action = action.item()
             next_state, reward, terminated, info = env.step(action)
             next_state = process_state(next_state)
 
