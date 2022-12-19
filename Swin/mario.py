@@ -58,7 +58,7 @@ def mario():
 
         # Act
         action = agent.act(previous_state)
-        next_state, reward, terminated, info = env.step(6)
+        next_state, reward, terminated, info = env.step(action)
         next_state = process_state(next_state)
 
         total_reward += reward
