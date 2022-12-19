@@ -51,8 +51,7 @@ def mario():
 
     total_reward = 0
     for game in range(GAMES):
-        if game % 10 == 0:
-            print(f'Game {game}')
+        print(f'Game {game}')
 
         for frame in range(3000):   # Max frames per game
 
