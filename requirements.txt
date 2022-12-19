@@ -21,7 +21,7 @@ Pillow==9.3.0
 procgen==0.10.7
 pycparser==2.21
 pyglet==1.5.21
-torch==1.13.0
+torch==1.13.1
 tqdm==4.64.1
 typing_extensions==4.4.0
 zipp==3.10.0
@@ -39,3 +39,12 @@ matplotlib==3.6.2
 pyparsing==3.0.9 
 python-dateutil==2.8.2 
 six==1.16.0
+certifi==2022.12.7 
+charset-normalizer==2.1.1 
+huggingface-hub==0.11.1 
+idna==3.4 
+pyyaml==6.0 
+requests==2.28.1 
+timm==0.6.12 
+torchvision==0.14.1 
+urllib3==1.26.13
