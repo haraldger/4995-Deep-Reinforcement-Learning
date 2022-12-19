@@ -19,15 +19,15 @@ from models.swin_transformer_v2 import SwinTransformerV2 as Transformer
 DEVICE = 'cuda' if torch.cuda.is_available() else 'cpu'
 NUM_ACTIONS = 7
 GAMES = 1000
-REPLAY_MEMORY = 40000
-INITIAL_EXPLORATION = 32
+REPLAY_MEMORY = 50
+INITIAL_EXPLORATION = 20
 # INITIAL_EPSILON = 1.0
 # FINAL_EPSILON = 0.01
-DECAY_FRAMES = 10000
+DECAY_FRAMES = 100
 DECAY_MODE = 'multiple'
 DECAY_RATE = 0.25
-DECAY_START_FRAMES = 40000
-SYNC_FREQUENCY = 2500
+DECAY_START_FRAMES = 0
+SYNC_FREQUENCY = 50
 
 # Data collection
 reward_data = np.array([[0,0]])
@@ -51,10 +51,12 @@ def mario():
     next_state = process_state(next_state)
 
     total_reward = 0
+    total_frames = 0
     for game in range(GAMES):
         print(f'Game {game}')
 
         for frame in range(3000):   # Max frames per game
+            print(f'Frames {total_frames}')
 
             previous_state = next_state
 
@@ -76,6 +78,7 @@ def mario():
             # Update frame counters
             agent.step()
             epsilon_scheduler.step()
+            total_frames += 1
 
             if terminated:
                 print("Terminated naturally")
@@ -83,6 +86,7 @@ def mario():
 
 
         # Data collection
+        print(total_reward)
         global reward_data
         reward_data = np.concatenate((reward_data, np.array([[game, total_reward]])))
         plt.figure()
