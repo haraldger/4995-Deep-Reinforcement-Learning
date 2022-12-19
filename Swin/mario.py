@@ -51,27 +51,33 @@ def mario():
 
     total_reward = 0
     for episode in range(EPISODES):
-        if episode % 10000 == 0:
-            print(f'Episode {episode}')     # Logging
+        for frame in range(5000):
+            if episode % 10000 == 0:
+                print(f'Episode {episode}')     # Logging
 
-        previous_state = next_state
+            previous_state = next_state
 
-        # Act
-        action = agent.act(previous_state)
-        next_state, reward, terminated, info = env.step(action)
-        next_state = process_state(next_state)
+            # Act
+            action = agent.act(previous_state)
+            next_state, reward, terminated, info = env.step(action)
+            next_state = process_state(next_state)
 
-        total_reward += reward
+            total_reward += reward
 
-        # Experience replay
-        replay_buffer.add(previous_state, action, next_state, reward)
+            # Experience replay
+            replay_buffer.add(previous_state, action, next_state, reward)
 
-        # Learn
-        agent.learn()
+            # Learn
+            agent.learn()
 
-        # Update frame counters
-        agent.step()
-        epsilon_scheduler.step()
+            # Update frame counters
+            agent.step()
+            epsilon_scheduler.step()
+
+            if terminated:
+                break 
+
+        terminated = True
 
         # Environment
         if terminated:
