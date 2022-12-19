@@ -17,16 +17,16 @@ from models.swin_transformer_v2 import SwinTransformerV2 as Transformer
 
 # Variables
 DEVICE = 'cuda' if torch.cuda.is_available() else 'cpu'
-EPISODES = int(10E6)
-REPLAY_MEMORY = 100000
+EPISODES = int(2E6)
+REPLAY_MEMORY = 40000
 INITIAL_EXPLORATION = 0
 # INITIAL_EPSILON = 1.0
 # FINAL_EPSILON = 0.01
-DECAY_FRAMES = 100000
-DECAY_MODE = 'single'
+DECAY_FRAMES = 10000
+DECAY_MODE = 'multiple'
 DECAY_RATE = 0.25
 DECAY_START_FRAMES = 0
-SYNC_FREQUENCY = 40000
+SYNC_FREQUENCY = 2500
 
 # Data collection
 reward_data = np.array([[0,0]])
@@ -58,7 +58,7 @@ def mario():
 
         # Act
         action = agent.act(previous_state)
-        next_state, reward, terminated, truncated, info = env.step(action)
+        next_state, reward, terminated, info = env.step(action)
         next_state = process_state(next_state)
 
         total_reward += reward
@@ -74,7 +74,7 @@ def mario():
         epsilon_scheduler.step()
 
         # Environment
-        if terminated or truncated:
+        if terminated:
             # Data collection
             global reward_data
             reward_data = np.concatenate((reward_data, np.array([[episode, total_reward]])))
