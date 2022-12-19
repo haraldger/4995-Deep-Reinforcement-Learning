@@ -51,9 +51,10 @@ def mario():
 
     total_reward = 0
     for episode in range(EPISODES):
+        if episode % 10000 == 0:
+            print(f'Episode {episode}')     # Logging
+            
         for frame in range(5000):
-            if episode % 10000 == 0:
-                print(f'Episode {episode}')     # Logging
 
             previous_state = next_state
 
