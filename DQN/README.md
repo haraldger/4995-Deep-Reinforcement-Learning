@@ -8,7 +8,7 @@
 
 3. Activate *mario* enviroment
     ```
-    conda activate myenv
+    conda activate mario
     ```
 
 ## Running
